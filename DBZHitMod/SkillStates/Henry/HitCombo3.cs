@@ -7,11 +7,11 @@ using static RoR2.Chat;
 
 namespace HenryMod.SkillStates
 {
-    public class HitCombo1 : BaseSkillState
+    public class HitCombo3 : BaseSkillState
     {
         public static float damageCoefficient = 1.5f;
         public static float buffDamageCoefficient = 1f;
-        public float baseDuration = 0.4f;
+        public float baseDuration = 0.35f;
         public static float attackRecoil = 0.5f;
         public static float hitHopVelocity = 5.5f;
         public static float baseEarlyExit = 0.25f;
@@ -37,7 +37,7 @@ namespace HenryMod.SkillStates
         {
             base.OnEnter();
             this.duration = this.baseDuration / this.attackSpeedStat;
-            this.earlyExitDuration = HitCombo1.baseEarlyExit / this.attackSpeedStat;
+            this.earlyExitDuration = HitCombo3.baseEarlyExit / this.attackSpeedStat;
             this.hasFired = false;
             this.animator = base.GetModelAnimator();
             //this.swordController = base.GetComponent<PaladinSwordController>();
@@ -46,8 +46,7 @@ namespace HenryMod.SkillStates
 
             //base.characterBody.healthComponent.AddBarrier(base.characterBody.damage);
 
-            Chat.SendBroadcastChat(new SimpleChatMessage { baseToken = "<color=#e5eefc>{0}</color>", paramTokens = new[] { "HitCOmbo1" } });
-
+            Chat.SendBroadcastChat(new SimpleChatMessage { baseToken = "<color=#e5eefc>{0}</color>", paramTokens = new[] { "HitCombo3" } });
 
             HitBoxGroup hitBoxGroup = null;
             Transform modelTransform = base.GetModelTransform();
@@ -59,12 +58,12 @@ namespace HenryMod.SkillStates
 
             //if (this.swingIndex == 0) base.PlayAnimation("Gesture, Override", "ZSlash1", "FireArrow.playbackRate", this.duration);
             //else base.PlayAnimation("Gesture, Override", "ZSlash1", "FireArrow.playbackRate", this.duration);
-            base.PlayAnimation("Attack", "Punch1", "attackSpeed", this.duration);
+            base.PlayAnimation("Attack", "HookPunch", "attackSpeed", this.duration);
 
 
 
 
-            float dmg = HitCombo1.damageCoefficient;
+            float dmg = HitCombo3.damageCoefficient;
             //if (this.swordController && this.swordController.swordActive) dmg = Slash.buffDamageCoefficient;
 
             this.attack = new OverlapAttack();
@@ -74,7 +73,7 @@ namespace HenryMod.SkillStates
             this.attack.teamIndex = base.GetTeam();
             this.attack.damage = dmg * this.damageStat;
             this.attack.procCoefficient = 1;
-            this.attack.hitEffectPrefab = HitCombo1.hitEffectPrefab;
+            this.attack.hitEffectPrefab = HitCombo3.hitEffectPrefab;
             this.attack.forceVector = Vector3.zero;
             this.attack.pushAwayForce = 1f;
             this.attack.hitBoxGroup = hitBoxGroup;
@@ -107,7 +106,7 @@ namespace HenryMod.SkillStates
 
                 if (base.isAuthority)
                 {
-                    base.AddRecoil(-1f * HitCombo1.attackRecoil, -2f * HitCombo1.attackRecoil, -0.5f * HitCombo1.attackRecoil, 0.5f * HitCombo1.attackRecoil);
+                    base.AddRecoil(-1f * HitCombo3.attackRecoil, -2f * HitCombo3.attackRecoil, -0.5f * HitCombo3.attackRecoil, 0.5f * HitCombo3.attackRecoil);
 
                     Ray aimRay = base.GetAimRay();
 
@@ -125,7 +124,7 @@ namespace HenryMod.SkillStates
                         {
                             if (base.characterMotor && !base.characterMotor.isGrounded)
                             {
-                                base.SmallHop(base.characterMotor, HitCombo1.hitHopVelocity);
+                                base.SmallHop(base.characterMotor, HitCombo3.hitHopVelocity);
                             }
 
                             this.hasHopped = true;
@@ -175,8 +174,8 @@ namespace HenryMod.SkillStates
                 //int index = this.swingIndex;
                 // if (index == 0) index = 1;
                 //else index = 0;
-                HitCombo2 HC2 = new HitCombo2();
-                this.outer.SetNextState(HC2);
+                HitCombo4 HC4 = new HitCombo4();
+                this.outer.SetNextState(HC4);
 
             }
 

@@ -27,11 +27,12 @@ namespace HenryMod.Modules.Survivors
             bodyColor = Color.grey,
             characterPortrait = Modules.Assets.LoadCharacterIcon("Henry"),
             crosshair = Modules.Assets.LoadCrosshair("Standard"),
-            damage = 12f,
+            damage = 20f,
             healthGrowth = 33f,
             healthRegen = 1.5f,
             jumpCount = 1,
             maxHealth = 110f,
+            attackSpeed = 1.2f,
             subtitleNameToken = HitPlugin.developerPrefix + "_HENRY_BODY_SUBTITLE",
             podPrefab = Resources.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
         };
@@ -184,6 +185,39 @@ namespace HenryMod.Modules.Survivors
             Transform hitboxTransform = childLocator.FindChild("SwordHitbox");
             Modules.Prefabs.SetupHitbox(model, hitboxTransform, "Sword");
             */
+
+            ChildLocator childLocator = bodyPrefab.GetComponentInChildren<ChildLocator>();
+            GameObject model = childLocator.gameObject;
+
+            Transform hitboxTransform = childLocator.FindChild("LHandHitBox");
+            Modules.Prefabs.SetupHitbox(model, hitboxTransform, "LHandHitBox");
+            //hitboxTransform.localScale = new Vector3(5.2f, 5.2f, 5.2f);
+            hitboxTransform.localScale = new Vector3(20f, 20f, 20f);
+
+            //----------------------------------
+
+
+            Transform hitboxTransformRH = childLocator.FindChild("RHandHitBox");
+            Modules.Prefabs.SetupHitbox(model, hitboxTransformRH, "RHandHitBox");
+            //hitboxTransform.localScale = new Vector3(5.2f, 5.2f, 5.2f);
+            hitboxTransformRH.localScale = new Vector3(20f, 20f, 20f);
+
+            //----------------------------------
+
+
+            Transform hitboxTransformKH = childLocator.FindChild("KickHitBox");
+            Modules.Prefabs.SetupHitbox(model, hitboxTransformKH, "KickHitBox");
+            //hitboxTransform.localScale = new Vector3(5.2f, 5.2f, 5.2f);
+            hitboxTransformKH.localScale = new Vector3(20f, 20f, 20f);
+
+            //----------------------------------
+
+
+            Transform hitboxTransformTB = childLocator.FindChild("TimeBreakerHitBox");
+            Modules.Prefabs.SetupHitbox(model, hitboxTransformTB, "TimeBreakerHitBox");
+            //hitboxTransform.localScale = new Vector3(5.2f, 5.2f, 5.2f);
+            hitboxTransformTB.localScale = new Vector3(20f, 20f, 20f);
+
         }
 
         internal override void InitializeSkills()
@@ -193,7 +227,36 @@ namespace HenryMod.Modules.Survivors
             string prefix = HitPlugin.developerPrefix;
 
             #region Primary
-            Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(SkillStates.SlashCombo)), "Weapon", prefix + "_HENRY_BODY_PRIMARY_SLASH_NAME", prefix + "_HENRY_BODY_PRIMARY_SLASH_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texPrimaryIcon"), true));
+            //Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(SkillStates.SlashCombo)), "Weapon", prefix + "_HENRY_BODY_PRIMARY_SLASH_NAME", prefix + "_HENRY_BODY_PRIMARY_SLASH_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texPrimaryIcon"), true));
+            Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(SkillStates.HitCombo1)), "Weapon", prefix + "ZSABER_NAME", prefix + "ZSABER_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texPrimaryIcon"), true));
+            /*
+            SkillDef HitComboSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "_HENRY_BODY_SECONDARY_GUN_NAME",
+                skillNameToken = prefix + "_HENRY_BODY_SECONDARY_GUN_NAME",
+                skillDescriptionToken = prefix + "_HENRY_BODY_SECONDARY_GUN_DESCRIPTION",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texPrimaryIcon"),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.HitCombo1)),
+                activationStateMachineName = "Weapon",
+                baseMaxStock = 1,
+                baseRechargeInterval = 0f,
+                beginSkillCooldownOnSkillEnd = false,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = true,
+                interruptPriority = EntityStates.InterruptPriority.Skill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = false,
+                cancelSprintingOnActivation = false,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+                keywordTokens = new string[] { "KEYWORD_AGILE" }
+            });
+
+            Modules.Skills.AddPrimarySkill(bodyPrefab, HitComboSkillDef);
+            */
             #endregion
 
             #region Secondary
@@ -254,6 +317,33 @@ namespace HenryMod.Modules.Survivors
             #endregion
 
             #region Special
+
+            SkillDef timeBreakerSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "TIMEBREAKER",
+                skillNameToken = prefix + "TIMEBREAKER",
+                skillDescriptionToken = prefix + "TIMEBREAKER",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texSpecialIcon"),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.TimeBreaker)),
+                activationStateMachineName = "Weapon",
+                baseMaxStock = 1,
+                baseRechargeInterval = 2f,
+                beginSkillCooldownOnSkillEnd = true,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = true,
+                interruptPriority = EntityStates.InterruptPriority.Skill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = false,
+                cancelSprintingOnActivation = true,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1
+            });
+
+            Modules.Skills.AddSpecialSkills(bodyPrefab, timeBreakerSkillDef);
+
             SkillDef bombSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = prefix + "_HENRY_BODY_SPECIAL_BOMB_NAME",

@@ -41,10 +41,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.1921808
-  m_Height: 0.62001127
+  m_Radius: 0.25409666
+  m_Height: 0.9613455
   m_Direction: 1
-  m_Center: {x: -0.02699989, y: -0.015897712, z: 0.1289114}
+  m_Center: {x: -0.036342856, y: 0.15476981, z: 0.16108426}
 --- !u!1 &1348360547701716468
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,10 +86,55 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.1921808
-  m_Height: 0.62001127
+  m_Radius: 0.25404894
+  m_Height: 1.0425156
   m_Direction: 1
-  m_Center: {x: -0.02699989, y: -0.015897712, z: 0.1289114}
+  m_Center: {x: 0.015140892, y: 0.19535345, z: 0.12546104}
+--- !u!1 &4701551077352931558
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6240225404394111452}
+  - component: {fileID: 8530893941040442957}
+  m_Layer: 0
+  m_Name: TimeBreakerHitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6240225404394111452
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4701551077352931558}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6202192455337770950}
+  m_RootOrder: 20
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &8530893941040442957
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4701551077352931558}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.6852357
+  m_Height: 5.3704715
+  m_Direction: 1
+  m_Center: {x: 0.037689924, y: 1.1373017, z: -0.16159463}
 --- !u!1 &6202192455337796096
 GameObject:
   m_ObjectHideFlags: 0
@@ -4203,6 +4248,7 @@ Transform:
   - {fileID: 6202192455337770604}
   - {fileID: 6202192455337770606}
   - {fileID: 4804494631599097640}
+  - {fileID: 6240225404394111452}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4282,6 +4328,8 @@ MonoBehaviour:
     transform: {fileID: 8388248373994093371}
   - name: RHandHitBox
     transform: {fileID: 2355368328813297103}
+  - name: TimeBreakerHitBox
+    transform: {fileID: 6240225404394111452}
 --- !u!1 &6202192455337796584
 GameObject:
   m_ObjectHideFlags: 0
@@ -4929,10 +4977,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 2.242471
-  m_Height: 8.789198
+  m_Radius: 2.9306295
+  m_Height: 9.467384
   m_Direction: 1
-  m_Center: {x: 0.0000021961143, y: 3.2052464, z: 0.59504706}
+  m_Center: {x: -0.0791646, y: 3.5443697, z: 0.18768485}
 --- !u!1 &6818582939235716035
 GameObject:
   m_ObjectHideFlags: 0

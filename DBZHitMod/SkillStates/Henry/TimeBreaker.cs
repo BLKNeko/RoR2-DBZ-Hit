@@ -7,9 +7,9 @@ using static RoR2.Chat;
 
 namespace HenryMod.SkillStates
 {
-    public class HitCombo1 : BaseSkillState
+    public class TimeBreaker : BaseSkillState
     {
-        public static float damageCoefficient = 1.5f;
+        public static float damageCoefficient = 0.2f;
         public static float buffDamageCoefficient = 1f;
         public float baseDuration = 0.4f;
         public static float attackRecoil = 0.5f;
@@ -23,6 +23,7 @@ namespace HenryMod.SkillStates
 
         private float earlyExitDuration;
         private float duration;
+        private float Timer = 0f;
         private bool hasFired;
         private float hitPauseTimer;
         private OverlapAttack attack;
@@ -37,7 +38,7 @@ namespace HenryMod.SkillStates
         {
             base.OnEnter();
             this.duration = this.baseDuration / this.attackSpeedStat;
-            this.earlyExitDuration = HitCombo1.baseEarlyExit / this.attackSpeedStat;
+            this.earlyExitDuration = TimeBreaker.baseEarlyExit / this.attackSpeedStat;
             this.hasFired = false;
             this.animator = base.GetModelAnimator();
             //this.swordController = base.GetComponent<PaladinSwordController>();
@@ -45,8 +46,9 @@ namespace HenryMod.SkillStates
             //base.characterBody.isSprinting = false;
 
             //base.characterBody.healthComponent.AddBarrier(base.characterBody.damage);
+             this.Timer = 0f;
 
-            Chat.SendBroadcastChat(new SimpleChatMessage { baseToken = "<color=#e5eefc>{0}</color>", paramTokens = new[] { "HitCOmbo1" } });
+            Chat.SendBroadcastChat(new SimpleChatMessage { baseToken = "<color=#e5eefc>{0}</color>", paramTokens = new[] { "TimeBreaker" } });
 
 
             HitBoxGroup hitBoxGroup = null;
@@ -54,17 +56,17 @@ namespace HenryMod.SkillStates
 
             if (modelTransform)
             {
-                hitBoxGroup = Array.Find<HitBoxGroup>(modelTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == "RHandHitBox");
+                hitBoxGroup = Array.Find<HitBoxGroup>(modelTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == "TimeBreakerHitBox");
             }
 
             //if (this.swingIndex == 0) base.PlayAnimation("Gesture, Override", "ZSlash1", "FireArrow.playbackRate", this.duration);
             //else base.PlayAnimation("Gesture, Override", "ZSlash1", "FireArrow.playbackRate", this.duration);
-            base.PlayAnimation("Attack", "Punch1", "attackSpeed", this.duration);
+            //base.PlayAnimation("Attack", "Punch1", "attackSpeed", this.duration);
 
 
 
 
-            float dmg = HitCombo1.damageCoefficient;
+            float dmg = TimeBreaker.damageCoefficient;
             //if (this.swordController && this.swordController.swordActive) dmg = Slash.buffDamageCoefficient;
 
             this.attack = new OverlapAttack();
@@ -74,7 +76,7 @@ namespace HenryMod.SkillStates
             this.attack.teamIndex = base.GetTeam();
             this.attack.damage = dmg * this.damageStat;
             this.attack.procCoefficient = 1;
-            this.attack.hitEffectPrefab = HitCombo1.hitEffectPrefab;
+            this.attack.hitEffectPrefab = TimeBreaker.hitEffectPrefab;
             this.attack.forceVector = Vector3.zero;
             this.attack.pushAwayForce = 1f;
             this.attack.hitBoxGroup = hitBoxGroup;
@@ -92,7 +94,9 @@ namespace HenryMod.SkillStates
         {
             if (!this.hasFired)
             {
-                this.hasFired = true;
+                //Commented for multiattack
+                //this.hasFired = true;
+
                 //Util.PlayScaledSound(EntityStates.Merc.GroundLight.comboAttackSoundString, base.gameObject, 0.5f);
                 //Util.PlaySound(Sounds.zSlash1Voice, base.gameObject);
                 //Util.PlaySound(Sounds.zSlash1SFX, base.gameObject);
@@ -107,9 +111,31 @@ namespace HenryMod.SkillStates
 
                 if (base.isAuthority)
                 {
-                    base.AddRecoil(-1f * HitCombo1.attackRecoil, -2f * HitCombo1.attackRecoil, -0.5f * HitCombo1.attackRecoil, 0.5f * HitCombo1.attackRecoil);
+                    base.AddRecoil(-1f * TimeBreaker.attackRecoil, -2f * TimeBreaker.attackRecoil, -0.5f * TimeBreaker.attackRecoil, 0.5f * TimeBreaker.attackRecoil);
 
                     Ray aimRay = base.GetAimRay();
+                    float dmg = TimeBreaker.damageCoefficient;
+
+                    HitBoxGroup hitBoxGroup = null;
+                    Transform modelTransform = base.GetModelTransform();
+
+                    if (modelTransform)
+                    {
+                        hitBoxGroup = Array.Find<HitBoxGroup>(modelTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == "TimeBreakerHitBox");
+                    }
+
+                    this.attack = new OverlapAttack();
+                    this.attack.damageType = (Util.CheckRoll(20f, base.characterBody.master) ? DamageType.Stun1s : DamageType.Generic);
+                    this.attack.attacker = base.gameObject;
+                    this.attack.inflictor = base.gameObject;
+                    this.attack.teamIndex = base.GetTeam();
+                    this.attack.damage = dmg * this.damageStat;
+                    this.attack.procCoefficient = 1;
+                    this.attack.hitEffectPrefab = TimeBreaker.hitEffectPrefab;
+                    this.attack.forceVector = Vector3.zero;
+                    this.attack.pushAwayForce = 1f;
+                    this.attack.hitBoxGroup = hitBoxGroup;
+                    this.attack.isCrit = base.RollCrit();
 
                     //if (this.swordController && this.swordController.swordActive)
                     //{
@@ -125,7 +151,7 @@ namespace HenryMod.SkillStates
                         {
                             if (base.characterMotor && !base.characterMotor.isGrounded)
                             {
-                                base.SmallHop(base.characterMotor, HitCombo1.hitHopVelocity);
+                                base.SmallHop(base.characterMotor, TimeBreaker.hitHopVelocity);
                             }
 
                             this.hasHopped = true;
@@ -145,6 +171,8 @@ namespace HenryMod.SkillStates
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+
+            /*
 
             this.hitPauseTimer -= Time.fixedDeltaTime;
 
@@ -169,21 +197,23 @@ namespace HenryMod.SkillStates
                 this.FireAttack();
             }
 
-            if (base.fixedAge >= (this.duration) && base.isAuthority && base.inputBank.skill1.down)
+            */
+
+
+            if (base.fixedAge >= this.duration && base.isAuthority)
             {
-
-                //int index = this.swingIndex;
-                // if (index == 0) index = 1;
-                //else index = 0;
-                HitCombo2 HC2 = new HitCombo2();
-                this.outer.SetNextState(HC2);
-
-            }
-
-            if (base.fixedAge >= this.duration && base.isAuthority && !base.inputBank.skill1.down)
-            {
+                if (Timer <= 3f)
+                {
+                    base.characterBody.SetAimTimer(2f);
+                    this.inHitPause = false;
+                    this.hasHopped = false;
+                    this.FireAttack();
+                    Timer += Time.fixedDeltaTime;
+                    Debug.Log(Timer);
+                }
+                else
                 this.outer.SetNextStateToMain();
-                return;
+
             }
         }
 
