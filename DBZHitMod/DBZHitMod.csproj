@@ -14,6 +14,8 @@
 
   <ItemGroup>
     <None Remove="dbzhitassetbundle" />
+    <None Remove="DBZHITSB.bnk" />
+    <None Remove="DBZHIT_SONDBANK.bnk" />
     <None Remove="HenryBank.bnk" />
     <None Remove="Modules\Survivors\Henry.cs~RF6221a098.TMP" />
     <None Remove="myassetbundle" />
@@ -21,6 +23,7 @@
 
   <ItemGroup>
     <EmbeddedResource Include="dbzhitassetbundle" />
+    <EmbeddedResource Include="DBZHITSB.bnk" />
     <EmbeddedResource Include="HenryBank.bnk" />
     <EmbeddedResource Include="myassetbundle" />
   </ItemGroup>

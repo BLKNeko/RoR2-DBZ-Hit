@@ -1,4 +1,5 @@
-﻿using EntityStates;
+﻿using DBZHitMod.Modules;
+using EntityStates;
 using RoR2;
 using System;
 using UnityEngine;
@@ -17,7 +18,8 @@ namespace HenryMod.SkillStates
         public static float baseEarlyExit = 0.25f;
         public int swingIndex;
 
-        public static GameObject hitEffectPrefab = Resources.Load<GameObject>("prefabs/effects/impacteffects/ImpactMercSwing");
+        //public static GameObject hitEffectPrefab = Resources.Load<GameObject>("prefabs/effects/impacteffects/ImpactMercSwing");
+        public static GameObject hitEffectPrefab = Resources.Load<GameObject>("prefabs/effects/impacteffects/lunarneedledamageeffect");
 
         public GameObject tracerEffectPrefab = Resources.Load<GameObject>("prefabs/effects/omnieffect/OmniImpactVFXSlashMerc");
 
@@ -67,7 +69,7 @@ namespace HenryMod.SkillStates
             //if (this.swordController && this.swordController.swordActive) dmg = Slash.buffDamageCoefficient;
 
             this.attack = new OverlapAttack();
-            this.attack.damageType = (Util.CheckRoll(20f, base.characterBody.master) ? DamageType.Stun1s : DamageType.Generic);
+            this.attack.damageType = (Util.CheckRoll(16f, base.characterBody.master) ? DamageType.Stun1s : DamageType.Generic);
             this.attack.attacker = base.gameObject;
             this.attack.inflictor = base.gameObject;
             this.attack.teamIndex = base.GetTeam();
@@ -95,6 +97,7 @@ namespace HenryMod.SkillStates
                 //Util.PlayScaledSound(EntityStates.Merc.GroundLight.comboAttackSoundString, base.gameObject, 0.5f);
                 //Util.PlaySound(Sounds.zSlash1Voice, base.gameObject);
                 //Util.PlaySound(Sounds.zSlash1SFX, base.gameObject);
+                Util.PlaySound(Sounds.hit1, base.gameObject);
 
                 //string muzzleString = null;
                 // if (this.swingIndex == 0) muzzleString = "SwingLeft";
@@ -117,8 +120,9 @@ namespace HenryMod.SkillStates
 
                     if (this.attack.Fire())
                     {
-                        Util.PlaySound(EntityStates.Merc.GroundLight.hitSoundString, base.gameObject);
+                        //Util.PlaySound(EntityStates.Merc.GroundLight.hitSoundString, base.gameObject);
                         //Util.PlaySound(MinerPlugin.Sounds.Hit, base.gameObject);
+                        
 
                         if (!this.hasHopped)
                         {

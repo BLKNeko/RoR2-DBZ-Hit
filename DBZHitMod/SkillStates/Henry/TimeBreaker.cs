@@ -1,4 +1,5 @@
-﻿using EntityStates;
+﻿using DBZHitMod.Modules;
+using EntityStates;
 using RoR2;
 using System;
 using UnityEngine;
@@ -17,9 +18,10 @@ namespace HenryMod.SkillStates
         public static float baseEarlyExit = 0.25f;
         public int swingIndex;
 
-        public static GameObject hitEffectPrefab = Resources.Load<GameObject>("prefabs/effects/impacteffects/ImpactMercSwing");
+        //public static GameObject hitEffectPrefab = Resources.Load<GameObject>("prefabs/effects/impacteffects/ImpactMercSwing");
+        public static GameObject hitEffectPrefab = Resources.Load<GameObject>("prefabs/effects/impacteffects/lunarneedledamageeffect");
 
-        public GameObject tracerEffectPrefab = Resources.Load<GameObject>("prefabs/effects/omnieffect/OmniImpactVFXSlashMerc");
+        //public GameObject tracerEffectPrefab = Resources.Load<GameObject>("prefabs/effects/omnieffect/OmniImpactVFXSlashMerc");
 
         private float earlyExitDuration;
         private float duration;
@@ -49,6 +51,7 @@ namespace HenryMod.SkillStates
              this.Timer = 0f;
 
             Chat.SendBroadcastChat(new SimpleChatMessage { baseToken = "<color=#e5eefc>{0}</color>", paramTokens = new[] { "TimeBreaker" } });
+            Util.PlaySound(Sounds.timeBreaker, base.gameObject);
 
 
             HitBoxGroup hitBoxGroup = null;
@@ -62,6 +65,7 @@ namespace HenryMod.SkillStates
             //if (this.swingIndex == 0) base.PlayAnimation("Gesture, Override", "ZSlash1", "FireArrow.playbackRate", this.duration);
             //else base.PlayAnimation("Gesture, Override", "ZSlash1", "FireArrow.playbackRate", this.duration);
             //base.PlayAnimation("Attack", "Punch1", "attackSpeed", this.duration);
+            base.PlayAnimation("Body", "Idle", "TimeBreaker.playbackRate", 1.8f);
 
 
 
@@ -144,8 +148,9 @@ namespace HenryMod.SkillStates
 
                     if (this.attack.Fire())
                     {
-                        Util.PlaySound(EntityStates.Merc.GroundLight.hitSoundString, base.gameObject);
+                        //Util.PlaySound(EntityStates.Merc.GroundLight.hitSoundString, base.gameObject);
                         //Util.PlaySound(MinerPlugin.Sounds.Hit, base.gameObject);
+                        
 
                         if (!this.hasHopped)
                         {

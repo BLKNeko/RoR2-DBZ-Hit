@@ -84,6 +84,16 @@ namespace HenryMod
                 {
                     self.armor += 300f;
                 }
+
+                if (self.HasBuff(Modules.Buffs.speedBuff))
+                {
+                    self.moveSpeed  += 8f;
+                }
+
+                if (self.HasBuff(Modules.Buffs.atkspeedBuff))
+                {
+                    self.attackSpeed += 1f;
+                }
             }
         }
     }

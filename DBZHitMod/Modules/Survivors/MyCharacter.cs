@@ -152,7 +152,9 @@ namespace HenryMod.Modules.Survivors
                     material = hitMat
                 }};
 
-        internal override Type characterMainState { get; set; } = typeof(EntityStates.GenericCharacterMain);
+        //internal override Type characterMainState { get; set; } = typeof(EntityStates.GenericCharacterMain);
+        internal override Type characterMainState { get; set; } = typeof(SkillStates.BaseStates.KiSense);
+
 
         // item display stuffs
         internal override ItemDisplayRuleSet itemDisplayRuleSet { get; set; }
@@ -218,6 +220,14 @@ namespace HenryMod.Modules.Survivors
             //hitboxTransform.localScale = new Vector3(5.2f, 5.2f, 5.2f);
             hitboxTransformTB.localScale = new Vector3(20f, 20f, 20f);
 
+            //----------------------------------
+
+
+            Transform hitboxTransformKS = childLocator.FindChild("KiSenseHitBox");
+            Modules.Prefabs.SetupHitbox(model, hitboxTransformKS, "KiSenseHitBox");
+            //hitboxTransform.localScale = new Vector3(5.2f, 5.2f, 5.2f);
+            hitboxTransformKS.localScale = new Vector3(5000f, 5000f, 5000f);
+
         }
 
         internal override void InitializeSkills()
@@ -260,6 +270,35 @@ namespace HenryMod.Modules.Survivors
             #endregion
 
             #region Secondary
+
+            SkillDef TimeHitSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "_HENRY_BODY_SECONDARY_GUN_NAME",
+                skillNameToken = prefix + "_HENRY_BODY_SECONDARY_GUN_NAME",
+                skillDescriptionToken = prefix + "_HENRY_BODY_SECONDARY_GUN_DESCRIPTION",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texSecondaryIcon"),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.TimeHit)),
+                activationStateMachineName = "Body",
+                baseMaxStock = 1,
+                baseRechargeInterval = 1f,
+                beginSkillCooldownOnSkillEnd = false,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = true,
+                interruptPriority = EntityStates.InterruptPriority.Skill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = false,
+                cancelSprintingOnActivation = false,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+                keywordTokens = new string[] { "KEYWORD_AGILE" }
+            });
+
+            Modules.Skills.AddSecondarySkills(bodyPrefab, TimeHitSkillDef);
+
+
             SkillDef shootSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = prefix + "_HENRY_BODY_SECONDARY_GUN_NAME",
@@ -289,6 +328,37 @@ namespace HenryMod.Modules.Survivors
             #endregion
 
             #region Utility
+
+            SkillDef timeSkipSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "_HENRY_BODY_UTILITY_ROLL_NAME",
+                skillNameToken = prefix + "_HENRY_BODY_UTILITY_ROLL_NAME",
+                skillDescriptionToken = prefix + "_HENRY_BODY_UTILITY_ROLL_DESCRIPTION",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texUtilityIcon"),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.TimeSkip)),
+                activationStateMachineName = "Slide",
+                baseMaxStock = 1,
+                baseRechargeInterval = 4f,
+                beginSkillCooldownOnSkillEnd = false,
+                canceledFromSprinting = false,
+                forceSprintDuringState = true,
+                fullRestockOnAssign = true,
+                interruptPriority = EntityStates.InterruptPriority.PrioritySkill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = false,
+                mustKeyPress = false,
+                cancelSprintingOnActivation = false,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1
+            });
+
+            Modules.Skills.AddUtilitySkills(bodyPrefab, timeSkipSkillDef);
+
+
+            //---------------
+
+
             SkillDef rollSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = prefix + "_HENRY_BODY_UTILITY_ROLL_NAME",

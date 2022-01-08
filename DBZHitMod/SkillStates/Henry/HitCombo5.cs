@@ -1,4 +1,5 @@
-﻿using EntityStates;
+﻿using DBZHitMod.Modules;
+using EntityStates;
 using RoR2;
 using System;
 using UnityEngine;
@@ -17,7 +18,8 @@ namespace HenryMod.SkillStates
         public static float baseEarlyExit = 0.25f;
         public int swingIndex;
 
-        public static GameObject hitEffectPrefab = Resources.Load<GameObject>("prefabs/effects/impacteffects/ImpactMercSwing");
+        //public static GameObject hitEffectPrefab = Resources.Load<GameObject>("prefabs/effects/impacteffects/ImpactMercSwing");
+        public static GameObject hitEffectPrefab = Resources.Load<GameObject>("prefabs/effects/impacteffects/lunarneedledamageeffect");
 
         public GameObject tracerEffectPrefab = Resources.Load<GameObject>("prefabs/effects/omnieffect/OmniImpactVFXSlashMerc");
 
@@ -96,6 +98,7 @@ namespace HenryMod.SkillStates
                 //Util.PlayScaledSound(EntityStates.Merc.GroundLight.comboAttackSoundString, base.gameObject, 0.5f);
                 //Util.PlaySound(Sounds.zSlash1Voice, base.gameObject);
                 //Util.PlaySound(Sounds.zSlash1SFX, base.gameObject);
+                Util.PlaySound(Sounds.hit3, base.gameObject);
 
                 //string muzzleString = null;
                 // if (this.swingIndex == 0) muzzleString = "SwingLeft";
@@ -118,8 +121,9 @@ namespace HenryMod.SkillStates
 
                     if (this.attack.Fire())
                     {
-                        Util.PlaySound(EntityStates.Merc.GroundLight.hitSoundString, base.gameObject);
+                        //Util.PlaySound(EntityStates.Merc.GroundLight.hitSoundString, base.gameObject);
                         //Util.PlaySound(MinerPlugin.Sounds.Hit, base.gameObject);
+                        
 
                         if (!this.hasHopped)
                         {

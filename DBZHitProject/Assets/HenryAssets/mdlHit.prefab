@@ -90,6 +90,51 @@ CapsuleCollider:
   m_Height: 1.0425156
   m_Direction: 1
   m_Center: {x: 0.015140892, y: 0.19535345, z: 0.12546104}
+--- !u!1 &3500221080115850951
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5439562992434112313}
+  - component: {fileID: 2317033385929280146}
+  m_Layer: 0
+  m_Name: KiSenseHitBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5439562992434112313
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3500221080115850951}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6202192455337770950}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &2317033385929280146
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3500221080115850951}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 94.452415
+  m_Height: 188.90483
+  m_Direction: 1
+  m_Center: {x: -3.1340408, y: 3.0716705, z: 0}
 --- !u!1 &4701551077352931558
 GameObject:
   m_ObjectHideFlags: 0
@@ -4249,6 +4294,8 @@ Transform:
   - {fileID: 6202192455337770606}
   - {fileID: 4804494631599097640}
   - {fileID: 6240225404394111452}
+  - {fileID: 5439562992434112313}
+  - {fileID: 7039652586007341411}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4330,6 +4377,10 @@ MonoBehaviour:
     transform: {fileID: 2355368328813297103}
   - name: TimeBreakerHitBox
     transform: {fileID: 6240225404394111452}
+  - name: KiSenseHitBox
+    transform: {fileID: 5439562992434112313}
+  - name: FlameBase
+    transform: {fileID: 7039652586007341411}
 --- !u!1 &6202192455337796584
 GameObject:
   m_ObjectHideFlags: 0
@@ -5026,3 +5077,33 @@ CapsuleCollider:
   m_Height: 2.2926652
   m_Direction: 1
   m_Center: {x: 0.00561738, y: 1.101031, z: 0.011446953}
+--- !u!1 &9194236325041340043
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7039652586007341411}
+  m_Layer: 0
+  m_Name: FlameBase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7039652586007341411
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9194236325041340043}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6202192455337770950}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
