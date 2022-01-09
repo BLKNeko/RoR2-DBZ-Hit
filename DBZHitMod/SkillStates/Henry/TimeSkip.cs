@@ -27,6 +27,10 @@ namespace HenryMod.SkillStates
             //this.muzzleString = "Muzzle";
 
             Util.PlaySound(Sounds.timeSkip, base.gameObject);
+            //base.PlayAnimation("Body", "Idle", "TimeHit.playbackRate", 1.8f);
+
+
+            EffectManager.SimpleMuzzleFlash(Modules.Assets.FlameAuraEffect, base.gameObject, "FlameBase", true);
 
             //base.PlayAnimation("LeftArm, Override", "ShootGun", "ShootGun.playbackRate", 1.8f);
         }
@@ -36,10 +40,10 @@ namespace HenryMod.SkillStates
             if (NetworkServer.active)
             {
                 //base.characterBody.AddTimedBuff(Modules.Buffs.armorBuff, 3f * Roll.duration);
-                base.characterBody.AddTimedBuff(Modules.Buffs.speedBuff, 5f * Roll.duration);
-                base.characterBody.AddTimedBuff(Modules.Buffs.atkspeedBuff, 5f * Roll.duration);
+                base.characterBody.AddTimedBuff(Modules.Buffs.speedBuff, 10f * Roll.duration);
+                base.characterBody.AddTimedBuff(Modules.Buffs.atkspeedBuff, 10f * Roll.duration);
                 //base.characterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 0.5f * Roll.duration);
-                base.characterBody.AddTimedBuff(RoR2Content.Buffs.Intangible, 5f * Roll.duration);
+                base.characterBody.AddTimedBuff(RoR2Content.Buffs.Intangible, 10f * Roll.duration);
             }
 
             base.OnExit();
@@ -49,11 +53,9 @@ namespace HenryMod.SkillStates
         {
             base.FixedUpdate();
 
-            if (base.fixedAge >= this.duration && base.isAuthority)
-            {
-                this.outer.SetNextStateToMain();
-                return;
-            }
+            this.outer.SetNextStateToMain();
+
+            
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

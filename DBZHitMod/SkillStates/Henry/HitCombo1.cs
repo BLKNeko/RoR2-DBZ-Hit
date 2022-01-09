@@ -10,7 +10,7 @@ namespace HenryMod.SkillStates
 {
     public class HitCombo1 : BaseSkillState
     {
-        public static float damageCoefficient = 1.5f;
+        public static float damageCoefficient = 1.1f;
         public static float buffDamageCoefficient = 1f;
         public float baseDuration = 0.4f;
         public static float attackRecoil = 0.5f;

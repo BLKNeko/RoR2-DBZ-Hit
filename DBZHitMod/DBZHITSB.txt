@@ -3,6 +3,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	631863429	CallTimeHit			\Default Work Unit\CallTimeHit	
 	1769773670	CallIce			\Default Work Unit\CallIce	
 	1871277837	CallDie			\Default Work Unit\CallDie	
+	1876570169	CallKiSense			\Default Work Unit\CallKiSense	
 	2540636375	CallTimeBreak			\Default Work Unit\CallTimeBreak	
 	3967958945	CallHit1			\Default Work Unit\CallHit1	
 	3967958946	CallHit2			\Default Work Unit\CallHit2	
@@ -13,13 +14,15 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	93049990	ARC_BTL_HTN_ColdEye_Ice	A:\Users\augus\Documents\WwiseProjects\DBZHITSB\.cache\Windows\SFX\ARC_BTL_HTN_ColdEye_Ice_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\ARC_BTL_HTN_ColdEye_Ice		14321
 	105369912	vhtn108_TakeThis	A:\Users\augus\Documents\WwiseProjects\DBZHITSB\.cache\Windows\SFX\vhtn108_TakeThis_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\TimeBreaker\vhtn108_TakeThis		11394
 	143923814	vhtn121_Try_To_Block_This	A:\Users\augus\Documents\WwiseProjects\DBZHITSB\.cache\Windows\SFX\vhtn121_Try_To_Block_This_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\TimeBreaker\vhtn121_Try_To_Block_This		14086
+	196425221	vhtn220_IContinuetoimprove	A:\Users\augus\Documents\WwiseProjects\DBZHITSB\.cache\Windows\SFX\vhtn220_IContinuetoimprove_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\KiSense\vhtn220_IContinuetoimprove		27680
 	362295844	vhtn029_Impossible	A:\Users\augus\Documents\WwiseProjects\DBZHITSB\.cache\Windows\SFX\vhtn029_Impossible_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\vhtn029_Impossible		24349
 	535286740	vhtn128My+Time_Skip	A:\Users\augus\Documents\WwiseProjects\DBZHITSB\.cache\Windows\SFX\vhtn128My+Time_Skip_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\TimeSkip\vhtn128My+Time_Skip		26962
 	595411489	vhtn211_HowAboutThis	A:\Users\augus\Documents\WwiseProjects\DBZHITSB\.cache\Windows\SFX\vhtn211_HowAboutThis_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\TimeBreaker\vhtn211_HowAboutThis		11465
 	609250961	ARC_BTL_HTN_Kyusho_Furi	A:\Users\augus\Documents\WwiseProjects\DBZHITSB\.cache\Windows\SFX\ARC_BTL_HTN_Kyusho_Furi_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\ARC_BTL_HTN_Kyusho_Furi		6965
 	666073338	ARC_BTL_HTN_Hakki_Attk	A:\Users\augus\Documents\WwiseProjects\DBZHITSB\.cache\Windows\SFX\ARC_BTL_HTN_Hakki_Attk_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\ARC_BTL_HTN_Hakki_Attk		15963
-	749902012	vhtn117_You_Wont_Scape	A:\Users\augus\Documents\WwiseProjects\DBZHITSB\.cache\Windows\SFX\vhtn117_You_Wont_Scape_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\TimeHit\vhtn117_You_Wont_Scape		11437
+	749902012	vhtn117_You_Wont_Scape	A:\Users\augus\Documents\WwiseProjects\DBZHITSB\.cache\Windows\SFX\vhtn117_You_Wont_Scape_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\KiSense\vhtn117_You_Wont_Scape		11437
 	790712394	vhtn213_Try_To_Block_This	A:\Users\augus\Documents\WwiseProjects\DBZHITSB\.cache\Windows\SFX\vhtn213_Try_To_Block_This_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\TimeHit\vhtn213_Try_To_Block_This		12452
+	876342680	vhtn200_LestBeguin	A:\Users\augus\Documents\WwiseProjects\DBZHITSB\.cache\Windows\SFX\vhtn200_LestBeguin_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\KiSense\vhtn200_LestBeguin		9436
 	908663196	vhtn209_Dont_Move	A:\Users\augus\Documents\WwiseProjects\DBZHITSB\.cache\Windows\SFX\vhtn209_Dont_Move_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\TimeHit\vhtn209_Dont_Move		7900
 	938435639	vhtn208_Over_Here	A:\Users\augus\Documents\WwiseProjects\DBZHITSB\.cache\Windows\SFX\vhtn208_Over_Here_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\TimeSkip\vhtn208_Over_Here		8123
 	1030568279	ARC_BTL_HTN_Kyusho_IdouFuri	A:\Users\augus\Documents\WwiseProjects\DBZHITSB\.cache\Windows\SFX\ARC_BTL_HTN_Kyusho_IdouFuri_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\ARC_BTL_HTN_Kyusho_IdouFuri		7210

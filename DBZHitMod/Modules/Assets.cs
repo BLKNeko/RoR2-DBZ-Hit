@@ -20,6 +20,15 @@ namespace HenryMod.Modules
 
         internal static GameObject bombExplosionEffect;
 
+        internal static GameObject FlameAuraEffect;
+
+        public static Sprite PassiveIcon;
+        public static Sprite Skill1Icon;
+        public static Sprite Skill2Icon;
+        public static Sprite Skill3Icon;
+        public static Sprite Skill4Icon;
+        public static Sprite SkinIcon;
+
         // networked hit sounds
         internal static NetworkSoundEventDef swordHitSoundEvent;
 
@@ -104,6 +113,13 @@ namespace HenryMod.Modules
 
             swordSwingEffect = Assets.LoadEffect("HenrySwordSwingEffect", true);
             swordHitImpactEffect = Assets.LoadEffect("ImpactHenrySlash");
+
+            FlameAuraEffect = Assets.LoadEffect("FlameVFX", true);
+
+            Skill1Icon = mainAssetBundle.LoadAsset<Sprite>("Skill1Icon");
+            Skill2Icon = mainAssetBundle.LoadAsset<Sprite>("Skill2Icon");
+            Skill3Icon = mainAssetBundle.LoadAsset<Sprite>("Skill3Icon");
+            Skill4Icon = mainAssetBundle.LoadAsset<Sprite>("Skill4Icon");
         }
 
         private static GameObject CreateTracer(string originalTracerName, string newTracerName)

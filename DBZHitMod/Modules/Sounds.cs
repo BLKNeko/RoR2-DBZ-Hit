@@ -14,5 +14,6 @@ namespace DBZHitMod.Modules
         public static readonly string timeHit = "CallTimeHit";
         public static readonly string ice = "CallIce";
         public static readonly string timeSkip = "CallTimeSkip";
+        public static readonly string kiSense = "CallKiSense";
     }
 }

@@ -30,6 +30,8 @@ namespace HenryMod.Modules.Survivors
 
         internal abstract Type characterMainState { get; set; }
 
+        internal abstract Type characterDeathState { get; set; }
+
         internal abstract ItemDisplayRuleSet itemDisplayRuleSet { get; set; }
         internal abstract List<ItemDisplayRuleSet.KeyAssetRuleGroup> itemDisplayRules { get; set; }
 
@@ -50,6 +52,8 @@ namespace HenryMod.Modules.Survivors
 
                 bodyPrefab = Modules.Prefabs.CreatePrefab(bodyName + "Body", "mdl" + bodyName, bodyInfo);
                 bodyPrefab.GetComponent<EntityStateMachine>().mainStateType = new EntityStates.SerializableEntityStateType(characterMainState);
+
+                bodyPrefab.GetComponent<CharacterDeathBehavior>().deathState = new EntityStates.SerializableEntityStateType(characterDeathState);
 
                 Modules.Prefabs.SetupCharacterModel(bodyPrefab, customRendererInfos, mainRendererIndex);
 

@@ -7,11 +7,11 @@ namespace HenryMod.SkillStates
 {
     public class TimeHit : BaseSkillState
     {
-        public static float damageCoefficient = 1f;
+        public static float damageCoefficient = 0.4f;
         public static float procCoefficient = 1f;
         public static float baseDuration = 0.6f;
-        public static float force = 800f;
-        public static float recoil = 3f;
+        public static float force = 0f;
+        public static float recoil = 1f;
         public static float range = 256f;
         public static GameObject tracerEffectPrefab = Resources.Load<GameObject>("Prefabs/Effects/Tracers/TracerGoldGat");
         public static GameObject hitEffectPrefab = Resources.Load<GameObject>("prefabs/effects/impacteffects/lunarneedleexplosioneffect");
@@ -57,7 +57,7 @@ namespace HenryMod.SkillStates
                         origin = aimRay.origin,
                         damage = TimeHit.damageCoefficient * this.damageStat,
                         damageColorIndex = DamageColorIndex.Default,
-                        damageType = DamageType.Generic,
+                        damageType = DamageType.Stun1s,
                         falloffModel = BulletAttack.FalloffModel.DefaultBullet,
                         maxDistance = TimeHit.range,
                         force = TimeHit.force,
