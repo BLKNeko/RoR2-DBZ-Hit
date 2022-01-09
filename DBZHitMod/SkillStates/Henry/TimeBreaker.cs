@@ -50,8 +50,9 @@ namespace HenryMod.SkillStates
             //base.characterBody.healthComponent.AddBarrier(base.characterBody.damage);
              this.Timer = 0f;
 
-            Chat.SendBroadcastChat(new SimpleChatMessage { baseToken = "<color=#e5eefc>{0}</color>", paramTokens = new[] { "TimeBreaker" } });
+            //Chat.SendBroadcastChat(new SimpleChatMessage { baseToken = "<color=#e5eefc>{0}</color>", paramTokens = new[] { "TimeBreaker" } });
             Util.PlaySound(Sounds.timeBreaker, base.gameObject);
+            Util.PlaySound(Sounds.ice, base.gameObject);
 
 
             HitBoxGroup hitBoxGroup = null;

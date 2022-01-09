@@ -42,7 +42,7 @@ namespace HenryMod.SkillStates.BaseStates
 
            
 
-            if (CooldownTime >= 10f)
+            if (CooldownTime >= 15f)
             {
                 CooldownTime = 0f;
                 this.outer.SetNextState(KSS);
@@ -53,21 +53,21 @@ namespace HenryMod.SkillStates.BaseStates
                 if(Util.CheckRoll((4 + base.characterBody.level), base.characterBody.master) && !reseted){
                     this.skillLocator.secondary.Reset();
                     reseted = true;
-                    Chat.SendBroadcastChat(new SimpleChatMessage { baseToken = "<color=#e5eefc>{0}</color>", paramTokens = new[] { "SecReset" } });
+                    //Chat.SendBroadcastChat(new SimpleChatMessage { baseToken = "<color=#e5eefc>{0}</color>", paramTokens = new[] { "SecReset" } });
                 }
 
                 if (Util.CheckRoll((4 + base.characterBody.level), base.characterBody.master) && !reseted)
                 {
                     this.skillLocator.utility.Reset();
                     reseted = true;
-                    Chat.SendBroadcastChat(new SimpleChatMessage { baseToken = "<color=#e5eefc>{0}</color>", paramTokens = new[] { "UtilReset" } });
+                    //Chat.SendBroadcastChat(new SimpleChatMessage { baseToken = "<color=#e5eefc>{0}</color>", paramTokens = new[] { "UtilReset" } });
                 }
 
                 if (Util.CheckRoll((4 + base.characterBody.level), base.characterBody.master) && !reseted)
                 {
                     this.skillLocator.special.Reset();
                     reseted = true;
-                    Chat.SendBroadcastChat(new SimpleChatMessage { baseToken = "<color=#e5eefc>{0}</color>", paramTokens = new[] { "SpecReset" } });
+                    //Chat.SendBroadcastChat(new SimpleChatMessage { baseToken = "<color=#e5eefc>{0}</color>", paramTokens = new[] { "SpecReset" } });
                 }
 
                 reseted = false;

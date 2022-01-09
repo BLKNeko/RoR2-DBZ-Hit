@@ -31,6 +31,7 @@ namespace HenryMod.SkillStates
             this.muzzleString = "Muzzle";
             //Util.PlaySound("HenryShootPistol", base.gameObject);
             Util.PlaySound(Sounds.timeHit, base.gameObject);
+            Util.PlaySound(Sounds.ice, base.gameObject);
 
             base.PlayAnimation("Body", "Idle", "TimeHit.playbackRate", 1.8f);
         }

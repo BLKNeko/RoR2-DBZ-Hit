@@ -20,10 +20,10 @@ namespace HenryMod.Modules.Survivors
 
         internal override BodyInfo bodyInfo { get; set; } = new BodyInfo
         {
-            armor = 20f,
+            armor = 25f,
             armorGrowth = 1.5f,
             bodyName = "HitBody",
-            bodyNameToken = HitPlugin.developerPrefix + "_HENRY_BODY_NAME",
+            bodyNameToken = HitPlugin.developerPrefix + "_HIT_BODY_NAME",
             bodyColor = new Color(0.46f, 0.24f, 0.78f),
             characterPortrait = Modules.Assets.LoadCharacterIcon("Henry"),
             crosshair = Modules.Assets.LoadCrosshair("Standard"),
@@ -35,7 +35,8 @@ namespace HenryMod.Modules.Survivors
             attackSpeed = 1.15f,
             moveSpeedGrowth = 0.1f,
             attackSpeedGrowth = 0.04f,
-            subtitleNameToken = HitPlugin.developerPrefix + "_HENRY_BODY_SUBTITLE",
+            critGrowth = 0.04f,
+            subtitleNameToken = HitPlugin.developerPrefix + "_HIT_BODY_SUBTITLE",
             podPrefab = Resources.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
         };
 
@@ -207,14 +208,6 @@ namespace HenryMod.Modules.Survivors
             Modules.Prefabs.SetupHitbox(model, hitboxTransformRH, "RHandHitBox");
             //hitboxTransform.localScale = new Vector3(5.2f, 5.2f, 5.2f);
             hitboxTransformRH.localScale = new Vector3(20f, 20f, 20f);
-
-            //----------------------------------
-
-
-            Transform hitboxTransformKH = childLocator.FindChild("KickHitBox");
-            Modules.Prefabs.SetupHitbox(model, hitboxTransformKH, "KickHitBox");
-            //hitboxTransform.localScale = new Vector3(5.2f, 5.2f, 5.2f);
-            hitboxTransformKH.localScale = new Vector3(20f, 20f, 20f);
 
             //----------------------------------
 

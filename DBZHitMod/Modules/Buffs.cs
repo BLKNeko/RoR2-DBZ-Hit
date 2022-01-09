@@ -16,8 +16,8 @@ namespace HenryMod.Modules
         internal static void RegisterBuffs()
         {
             armorBuff = AddNewBuff("HenryArmorBuff", Resources.Load<Sprite>("Textures/BuffIcons/texBuffGenericShield"), Color.white, false, false);
-            speedBuff = AddNewSpeedBuff("SpeedBuff", Resources.Load<Sprite>("Textures/BuffIcons/texBuffGenericShield"), Color.white, false, false);
-            atkspeedBuff = AddNewAtkSpeedBuff("AtkSpeedBuff", Resources.Load<Sprite>("Textures/BuffIcons/texBuffGenericShield"), Color.white, false, false);
+            speedBuff = AddNewSpeedBuff("SpeedBuff", Resources.Load<Sprite>("textures/bufficons/texmovespeedbufficon"), Color.white, false, false);
+            atkspeedBuff = AddNewAtkSpeedBuff("AtkSpeedBuff", Resources.Load<Sprite>("textures/bufficons/texbuffattackspeedoncriticon"), Color.white, false, false);
         }
 
         // simple helper method

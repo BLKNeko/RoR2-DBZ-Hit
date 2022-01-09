@@ -48,7 +48,7 @@ namespace HenryMod.SkillStates
 
             //base.characterBody.healthComponent.AddBarrier(base.characterBody.damage);
 
-            Chat.SendBroadcastChat(new SimpleChatMessage { baseToken = "<color=#e5eefc>{0}</color>", paramTokens = new[] { "HitCombo2" } });
+            //Chat.SendBroadcastChat(new SimpleChatMessage { baseToken = "<color=#e5eefc>{0}</color>", paramTokens = new[] { "HitCombo2" } });
 
             HitBoxGroup hitBoxGroup = null;
             Transform modelTransform = base.GetModelTransform();
