@@ -20,10 +20,10 @@ namespace HenryMod.Modules
 
         internal static void RegisterNewSurvivor(GameObject bodyPrefab, GameObject displayPrefab, Color charColor, string namePrefix, UnlockableDef unlockableDef, float sortPosition)
         {
-            string fullNameString = HitPlugin.developerPrefix + "_" + namePrefix + "_BODY_NAME";
-            string fullDescString = HitPlugin.developerPrefix + "_" + namePrefix + "_BODY_DESCRIPTION";
-            string fullOutroString = HitPlugin.developerPrefix + "_" + namePrefix + "_BODY_OUTRO_FLAVOR";
-            string fullFailureString = HitPlugin.developerPrefix + "_" + namePrefix + "_BODY_OUTRO_FAILURE";
+            string fullNameString = HitPlugin.developerPrefix + "_HIT_BODY_" + "NAME";
+            string fullDescString = HitPlugin.developerPrefix + "_HIT_BODY_" + "DESCRIPTION";
+            string fullOutroString = HitPlugin.developerPrefix + "_HIT_BODY_" + "OUTRO_FLAVOR";
+            string fullFailureString = HitPlugin.developerPrefix + "_HIT_BODY_" + "OUTRO_FAILURE";
 
             SurvivorDef survivorDef = ScriptableObject.CreateInstance<SurvivorDef>();
             survivorDef.bodyPrefab = bodyPrefab;

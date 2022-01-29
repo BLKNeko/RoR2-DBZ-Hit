@@ -51,6 +51,16 @@ namespace HenryMod.Modules
             skillFamilies.Add(specialFamily);
         }
 
+        internal static void PassiveSetup(GameObject targetPrefab)
+        {
+            SkillLocator skillLocator = targetPrefab.GetComponent<SkillLocator>();
+            string prefix = HitPlugin.developerPrefix + "_HIT_BODY_";
+            skillLocator.passiveSkill.enabled = true;
+            skillLocator.passiveSkill.skillNameToken = prefix + "PASSIVE_KS_NAME";
+            skillLocator.passiveSkill.skillDescriptionToken = prefix + "PASSIVE_KS_DESCRIPTION";
+            skillLocator.passiveSkill.icon = Assets.PassiveIcon;
+        }
+
         // this could all be a lot cleaner but at least it's simple and easy to work with
         internal static void AddPrimarySkill(GameObject targetPrefab, SkillDef skillDef)
         {

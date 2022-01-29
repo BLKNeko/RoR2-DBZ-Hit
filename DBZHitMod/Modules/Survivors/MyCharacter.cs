@@ -25,7 +25,7 @@ namespace HenryMod.Modules.Survivors
             bodyName = "HitBody",
             bodyNameToken = HitPlugin.developerPrefix + "_HIT_BODY_NAME",
             bodyColor = new Color(0.46f, 0.24f, 0.78f),
-            characterPortrait = Modules.Assets.LoadCharacterIcon("Henry"),
+            characterPortrait = Modules.Assets.HitIcon,
             crosshair = Modules.Assets.LoadCrosshair("Standard"),
             damage = 18f,
             healthGrowth = 30f,
@@ -231,11 +231,13 @@ namespace HenryMod.Modules.Survivors
         {
             Modules.Skills.CreateSkillFamilies(bodyPrefab);
 
-            string prefix = HitPlugin.developerPrefix;
+            Modules.Skills.PassiveSetup(bodyPrefab);
+
+            string prefix = HitPlugin.developerPrefix + "_HIT_BODY_";
 
             #region Primary
             //Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(SkillStates.SlashCombo)), "Weapon", prefix + "_HENRY_BODY_PRIMARY_SLASH_NAME", prefix + "_HENRY_BODY_PRIMARY_SLASH_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texPrimaryIcon"), true));
-            Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(SkillStates.HitCombo1)), "Weapon", prefix + "ZSABER_NAME", prefix + "ZSABER_DESCRIPTION", Modules.Assets.Skill1Icon, true));
+            Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(SkillStates.HitCombo1)), "Weapon", prefix + "PRIMARY_DH_NAME", prefix + "PRIMARY_DH_DESCRIPTION", Modules.Assets.Skill1Icon, true));
             /*
             SkillDef HitComboSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
@@ -270,9 +272,9 @@ namespace HenryMod.Modules.Survivors
 
             SkillDef TimeHitSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "_HENRY_BODY_SECONDARY_GUN_NAME",
-                skillNameToken = prefix + "_HENRY_BODY_SECONDARY_GUN_NAME",
-                skillDescriptionToken = prefix + "_HENRY_BODY_SECONDARY_GUN_DESCRIPTION",
+                skillName = prefix + "SECONDARY_TR_NAME",
+                skillNameToken = prefix + "SECONDARY_TR_NAME",
+                skillDescriptionToken = prefix + "SECONDARY_TR_DESCRIPTION",
                 skillIcon = Modules.Assets.Skill2Icon,
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.TimeHit)),
                 activationStateMachineName = "Body",
@@ -290,7 +292,7 @@ namespace HenryMod.Modules.Survivors
                 rechargeStock = 1,
                 requiredStock = 1,
                 stockToConsume = 1,
-                keywordTokens = new string[] { "KEYWORD_AGILE" }
+                //keywordTokens = new string[] { "KEYWORD_AGILE" }
             });
 
             Modules.Skills.AddSecondarySkills(bodyPrefab, TimeHitSkillDef);
@@ -303,9 +305,9 @@ namespace HenryMod.Modules.Survivors
 
             SkillDef timeSkipSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "_HENRY_BODY_UTILITY_ROLL_NAME",
-                skillNameToken = prefix + "_HENRY_BODY_UTILITY_ROLL_NAME",
-                skillDescriptionToken = prefix + "_HENRY_BODY_UTILITY_ROLL_DESCRIPTION",
+                skillName = prefix + "UTILITY_TOT_NAME",
+                skillNameToken = prefix + "UTILITY_TOT_NAME",
+                skillDescriptionToken = prefix + "UTILITY_TOT_DESCRIPTION",
                 skillIcon = Modules.Assets.Skill3Icon,
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.TimeSkip)),
                 activationStateMachineName = "Weapon",
@@ -334,9 +336,9 @@ namespace HenryMod.Modules.Survivors
 
             SkillDef timeBreakerSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "TIMEBREAKER",
-                skillNameToken = prefix + "TIMEBREAKER",
-                skillDescriptionToken = prefix + "TIMEBREAKER",
+                skillName = prefix + "SPECIAL_TS_NAME",
+                skillNameToken = prefix + "SPECIAL_TS_NAME",
+                skillDescriptionToken = prefix + "SPECIAL_TS_DESCRIPTION",
                 skillIcon = Modules.Assets.Skill4Icon,
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.TimeBreaker)),
                 activationStateMachineName = "Weapon",
@@ -377,8 +379,9 @@ namespace HenryMod.Modules.Survivors
             List<SkinDef> skins = new List<SkinDef>();
 
             #region DefaultSkin
-            SkinDef defaultSkin = Modules.Skins.CreateSkinDef(HitPlugin.developerPrefix + "_HENRY_BODY_DEFAULT_SKIN_NAME",
-                Assets.mainAssetBundle.LoadAsset<Sprite>("texMainSkin"),
+            string prefix = HitPlugin.developerPrefix + "_HIT_BODY_";
+            SkinDef defaultSkin = Modules.Skins.CreateSkinDef(prefix + "DEFAULT_SKIN_NAME",
+                Assets.SkinIcon,
                 defaultRenderers,
                 mainRenderer,
                 model);

@@ -29,6 +29,8 @@ namespace HenryMod.Modules
         public static Sprite Skill4Icon;
         public static Sprite SkinIcon;
 
+        public static Texture HitIcon;
+
         // networked hit sounds
         internal static NetworkSoundEventDef swordHitSoundEvent;
 
@@ -120,6 +122,9 @@ namespace HenryMod.Modules
             Skill2Icon = mainAssetBundle.LoadAsset<Sprite>("Skill2Icon");
             Skill3Icon = mainAssetBundle.LoadAsset<Sprite>("Skill3Icon");
             Skill4Icon = mainAssetBundle.LoadAsset<Sprite>("Skill4Icon");
+            SkinIcon = mainAssetBundle.LoadAsset<Sprite>("SkinIcon");
+            HitIcon = mainAssetBundle.LoadAsset<Texture>("HitIcon");
+            PassiveIcon = mainAssetBundle.LoadAsset<Sprite>("PassiveIcon");
         }
 
         private static GameObject CreateTracer(string originalTracerName, string newTracerName)
